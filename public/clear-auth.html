@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Authentication</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 { color: #333; margin-bottom: 1rem; }
+        p { color: #666; line-height: 1.6; }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        button:hover { background: #5568d3; }
+        .success { color: #4CAF50; font-weight: bold; margin-top: 1rem; }
+        .info { background: #e3f2fd; padding: 1rem; border-radius: 6px; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Authentication Fix</h1>
+        <p>Your authentication tokens are invalid due to the JWT_SECRET change.</p>
+        
+        <div class="info">
+            <strong>This will:</strong><br>
+            ✓ Clear old invalid tokens<br>
+            ✓ Clear all localStorage data<br>
+            ✓ Redirect you to login
+        </div>
+
+        <button onclick="clearAndRedirect()">Clear Auth & Reload</button>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        function clearAndRedirect() {
+            // Clear all localStorage
+            localStorage.clear();
+            
+            // Clear sessionStorage too
+            sessionStorage.clear();
+            
+            // Show success message
+            document.getElementById('status').innerHTML = 
+                '<div class="success">✅ Cleared! Redirecting to login...</div>';
+            
+            // Redirect after 1 second
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 1000);
+        }
+        
+        // Auto-clear if URL has ?auto=true
+        if (window.location.search.includes('auto=true')) {
+            clearAndRedirect();
+        }
+    </script>
+</body>
+</html>

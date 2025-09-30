@@ -1,0 +1,38 @@
+/* Remote cursor styles */
+.remote-cursor {
+  position: absolute;
+  width: 2px;
+  background-color: #00bcd4;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Different colors for different users */
+.remote-cursor-0,
+.remote-cursor-1,
+.remote-cursor-2,
+.remote-cursor-3,
+.remote-cursor-4,
+.remote-cursor-5,
+.remote-cursor-6,
+.remote-cursor-7,
+.remote-cursor-8,
+.remote-cursor-9 {
+  background-color: #00bcd4;
+}
+
+/* Additional cursor color variations */
+.remote-cursor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 6px;
+  height: 20px;
+  background-color: inherit;
+  opacity: 0.3;
+}

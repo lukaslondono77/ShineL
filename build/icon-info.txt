@@ -1,0 +1,15 @@
+ShineL needs app icons for the installers.
+
+For now, we'll use Electron's default icons.
+
+To add custom icons later:
+1. Create a 1024x1024 PNG logo
+2. Convert to .icns (Mac), .ico (Windows), .png (Linux)
+3. Place in this build/ folder
+
+Tools:
+- Online: cloudconvert.com, iconverticons.com
+- Mac: iconutil, png2icns
+- Windows: ImageMagick
+
+The app will work perfectly with default icons!
